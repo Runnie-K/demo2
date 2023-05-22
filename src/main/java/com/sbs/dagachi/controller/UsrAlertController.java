@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sbs.dagachi.service.AlertService;
 import com.sbs.dagachi.vo.Alert;
@@ -19,6 +20,7 @@ public class UsrAlertController {
 	}
 
 	@RequestMapping("/usr/common/head")
+	@ResponseBody
 	public String showAlertList(Model model) {
 
 		List<Alert> alerts = alertService.getAlerts();

@@ -112,24 +112,25 @@
 		    <div class="dropdown-divider"></div>
 		
 		    <c:choose>
-		      <c:when test="${alerts ne null}">
-		        <c:forEach items="${alerts}" var="alert">
-		          <a href="${alert.alert_url}" class="dropdown-item">
-		            <div class="hidden">${alert.alert_id}</div>
-		            <i class="fas fa-envelope mr-2"></i>
-		            ${alert.alert_body}
-		            <span class="float-right text-muted text-sm">${alert.elapsed_time}</span>
-		          </a>
-		          <div class="dropdown-divider"></div>
-		        </c:forEach>
-		      </c:when>
-		      <c:otherwise>
-		        <a href="#" class="dropdown-item" style="font-size:15px; color:#808080">
-		          알림이 없습니다.
-		        </a>
-		        <div class="dropdown-divider"></div>
-		      </c:otherwise>
-		    </c:choose>
+			    <c:when test="${not empty alerts}">
+			        <c:forEach items="${alerts}" var="alert">
+			            <div style="display:none;">${alert.alert_id}</div>
+			            <a href="${alert.alert_url}" class="dropdown-item">
+			                <i class="fas fa-envelope mr-2"></i>
+			                ${alert.alert_body}
+			                <span class="float-right text-muted text-sm">${alert.elapsed_time}</span>
+			            </a>
+			            <div class="dropdown-divider"></div>
+			        </c:forEach>
+			    </c:when>
+			    <c:otherwise>
+			        <a href="#" class="dropdown-item" style="font-size:15px; color:#808080">
+			            알림이 없습니다.
+			        </a>
+			        <div class="dropdown-divider"></div>
+			    </c:otherwise>
+			</c:choose>
+
 		    <!-- 알림 삭제 고정 -->
 		    <button class="dropdown-item dropdown-footer" onclick="deleteAlerts()">알림 삭제</button>
 		  </div>
